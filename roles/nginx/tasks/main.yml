@@ -1,0 +1,12 @@
+---
+- name: install nginx
+  apt: name=nginx state=latest
+- name: start nginx
+  service:
+     name: nginx
+     state: started
+- name: Copy config file
+  copy:
+     src: default
+     dest: /etc/nginx/sites-enabled/default
+  notify: restart nginx                 

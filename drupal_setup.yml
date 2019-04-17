@@ -1,0 +1,14 @@
+---
+- hosts: drupal_hosts
+  sudo: yes
+  vars:
+    - db_name: drupal
+    - db_user: drupal_user
+    - db_password: Vicky@1996
+  roles:
+    - update
+    - php
+    - mysql
+    - nginx
+    - drupal
+

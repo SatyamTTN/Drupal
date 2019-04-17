@@ -1,0 +1,17 @@
+---
+-
+   hosts: webservers
+   become: yes
+   tasks:
+      - name: Ubuntu
+        when: ansible_os_family == "Debian"
+        copy:
+           src: ubuntu.txt
+           dest: /
+
+      - name: RHEL
+        when: ansible_os_family == "RedHat"
+        copy:
+           src: RHEL.txt
+           dest: /
+
