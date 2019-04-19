@@ -1,4 +1,8 @@
 ---
-- name: apt-get update the server
+- name: update the ubuntu server
   apt: update_cache=yes
+  when: ansible_os_family == "Debian"
 
+- name: update the CentOS or RHEL server
+  yum: update_cache=yes
+  when: ansible_os_family == "CentOS" or ansible_os_family == "RedHat"
