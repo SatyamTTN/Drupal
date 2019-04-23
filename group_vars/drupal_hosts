@@ -1,0 +1,7 @@
+---
+db_name: drupal
+db_user: drupal_user
+db_password: Vicky@1996
+
+server_name: example.com
+port: 8080

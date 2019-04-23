@@ -1,23 +1,40 @@
 ---
-- name: PHP | Add php-7.0 PPA
-  apt_repository: repo='ppa:ondrej/php'
-     state=present
-     update_cache=yes
-
 - name: PHP | install php packages
   apt: pkg={{ item }} state=present
   with_items:
-    - php7.0-fpm
-    - php7.0-cli
-    - php7.0-common
-    - php7.0-curl
-    - php7.0-json
-    - php7.0-gd
-    - php7.0-odbc
-    - php7.0-mbstring
-    - php7.0-mysql
-    - php7.0-xmlrpc
-    - php7.0-opcache
-    - php7.0-intl
-    - php7.0-bz2
-    - php7.0-xml
+    - php
+    - php-fpm
+    - php-cli
+    - php-common
+    - php-curl
+    - php-json
+    - php-gd
+    - php-odbc
+    - php-mbstring
+    - php-mysql
+    - php-xmlrpc
+    - php-opcache
+    - php-intl
+    - php-bz2
+    - php-xml
+  when: ansible_os_family == "Debian"
+
+- name: PHP | install php packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - php
+    - php-fpm
+    - php-cli
+    - php-common
+    - php-curl
+    - php-json
+    - php-gd
+    - php-odbc
+    - php-mbstring
+    - php-mysql
+    - php-xmlrpc
+    - php-opcache
+    - php-intl
+    - php-bz2
+    - php-xml
+  when: ansible_os_family == "CentOS" or ansible_os_family == "RedHat"
